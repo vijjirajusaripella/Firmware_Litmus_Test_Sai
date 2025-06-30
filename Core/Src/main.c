@@ -18,8 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "api_motor_driver_tmc5160.h"
-#include "api_motor_driver.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -69,7 +68,6 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_SPI1_Init(void);
-static HAL_StatusTypeDef Firmware_Litmus_Test(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -124,7 +122,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	Firmware_Litmus_Test();
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -266,7 +264,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(SD_Mode_GPIO_Port, SD_Mode_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, DRV_ENN_Pin|SD_Mode_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_RESET);
@@ -277,12 +275,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(User_Button_Input_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : SD_Mode_Pin */
-  GPIO_InitStruct.Pin = SD_Mode_Pin;
+  /*Configure GPIO pins : DRV_ENN_Pin SD_Mode_Pin */
+  GPIO_InitStruct.Pin = DRV_ENN_Pin|SD_Mode_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(SD_Mode_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : SPI1_CS_Pin */
   GPIO_InitStruct.Pin = SPI1_CS_Pin;

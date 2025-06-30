@@ -58,13 +58,14 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define BUTTON_PRESSED GPIO_PIN_RESET
 #define User_Button_Input_Pin GPIO_PIN_13
 #define User_Button_Input_GPIO_Port GPIOC
 #define USART_TX_Pin GPIO_PIN_2
 #define USART_TX_GPIO_Port GPIOA
 #define USART_RX_Pin GPIO_PIN_3
 #define USART_RX_GPIO_Port GPIOA
+#define DRV_ENN_Pin GPIO_PIN_8
+#define DRV_ENN_GPIO_Port GPIOA
 #define SD_Mode_Pin GPIO_PIN_9
 #define SD_Mode_GPIO_Port GPIOA
 #define TMS_Pin GPIO_PIN_13

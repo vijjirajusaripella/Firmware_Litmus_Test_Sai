@@ -111,6 +111,7 @@ HAL_StatusTypeDef api_motor_driver_tmc5160_initialize(const struct s_api_motor_d
 	{
 		case e_api_motor_driver_tmc5160_SPI_state_idle:
 			HAL_GPIO_WritePin(SD_Mode_GPIO_Port, SD_Mode_Pin, GPIO_PIN_RESET); // Pull SD_Mode LOW for selecting Mode 1 of TMC5160A, That is SPI Mode
+			HAL_GPIO_WritePin(DRV_ENN_GPIO_Port, DRV_ENN_Pin, GPIO_PIN_RESET); // Pull DRV_ENN LOW for enabling the motor driver
 			p_self->state_initialize = e_api_motor_driver_tmc5160_SPI_state_acquiring_slave;
 		case e_api_motor_driver_tmc5160_SPI_state_acquiring_slave:
 			HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_RESET); // Pull CS LOW for making SPI Active
