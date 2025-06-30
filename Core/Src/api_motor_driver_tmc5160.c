@@ -79,10 +79,10 @@ uint32_t api_motor_driver_tmc5160_ihold_irun_value(uint8_t ihold, uint8_t irun, 
 }
 
 const s_api_motor_driver_t * s_api_motor_driver_tmc5160_try_construct(s_api_motor_driver_tmc5160_t * const p_self,
-												                       const SPI_HandleTypeDef *hspi,
-												                       const e_api_motor_driver_tmc5160_IHOLD_t I_HOLD,
-												                       const e_api_motor_driver_tmc5160_IRUN_t I_RUN,
-												                       const e_api_motor_driver_tmc5160_IHOLDDELAY_t I_HOLDDELAY)
+									const SPI_HandleTypeDef *hspi,
+									const e_api_motor_driver_tmc5160_IHOLD_t I_HOLD,
+									const e_api_motor_driver_tmc5160_IRUN_t I_RUN,
+									const e_api_motor_driver_tmc5160_IHOLDDELAY_t I_HOLDDELAY)
 {
 	p_self->hspi = hspi;
 	p_self->state_initialize = e_api_motor_driver_tmc5160_SPI_state_idle;
