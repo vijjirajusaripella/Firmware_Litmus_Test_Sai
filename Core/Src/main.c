@@ -48,12 +48,12 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 
 typedef enum {
-    e_app_motor_state_idle = 0,
-    e_app_motor_state_initialize_motor,
+    	e_app_motor_state_idle = 0,
+    	e_app_motor_state_initialize_motor,
 	e_app_motor_state_check_button,
-    e_app_motor_state_set_mode,
+    	e_app_motor_state_set_mode,
 	e_app_motor_state_set_velocity_1_300_CW,
-    e_app_motor_state_set_velocity_2_500_CCW,
+    	e_app_motor_state_set_velocity_2_500_CCW,
 	e_app_motor_state_set_velocity_3_0,
 	e_app_motor_state_error
 } e_app_motor_state_t;
