@@ -29,7 +29,7 @@ My project follows a clean **4-layer architecture** for modularity and maintaina
   - Stop → Button press 3 (cycles)
 - **User Button (PC13)** triggers RPM transitions.
 - **SPI1_CS (PB6)** and **SD_Mode (PA9)** are controlled manually for activating TMC5160 SPI mode and communication window.
-
+- **DRR_ENN (PA8)** to enable or diable the motor driver.
 ---
 
 ## 🧠 Why Asynchronous Communication?
@@ -67,6 +67,7 @@ We **manually pull pins low/high** for critical operation steps:
 
 - **SD_Mode (PA9)** → Pulled LOW to enable TMC5160 SPI Mode 1
 - **SPI1_CS (PB6)** → Pulled LOW before SPI transfer and HIGH after
+- **DRV_ENN (PA8)** → Pulled LOW to enable the driver
 
 This gives full control over the timing and ensures reliable protocol adherence.
 
