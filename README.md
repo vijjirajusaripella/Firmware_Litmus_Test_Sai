@@ -41,6 +41,7 @@ We chose **non-blocking, interrupt-driven SPI communication** (`HAL_SPI_Transmit
 - It avoids halting the main loop during data transfer.
 - It makes the firmware scalable and responsive to user actions.
 - It aligns with good embedded design practices, especially for real-time control.
+- Will be extremely useful if we would like to scale it for other complex tasks.
 
 ---
 
@@ -60,6 +61,12 @@ Only **essential registers** are configured (e.g., `IHOLD_IRUN`, `VACTUAL`, `GST
 
 - As the test's goal is to verify basic motor control over SPI, not optimize silent motion or current profiles.
 - Simplifies the driver.
+
+---
+
+## 📌 TMC5160 Mode Configuration
+
+I chose **Mode 1** for the TMC5160 because it allows standard SPI communication without needing additional signals like STEP/DIR. In this mode, the TMC5160 operates fully via SPI, which suits our microcontroller-based firmware design and gives us complete control over motor configuration and movement.
 
 ---
 
