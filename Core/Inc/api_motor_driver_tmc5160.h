@@ -59,21 +59,21 @@ typedef struct s_api_motor_driver_tmc5160_t
 {
 	s_api_motor_driver_t api_motor_driver;
 	// SPI handle for communication with the motor driver
-    SPI_HandleTypeDef *hspi;
-    e_api_motor_driver_tmc5160_SPI_state_t state_initialize;
-    e_api_motor_driver_tmc5160_SPI_state_t state_set_velocity;
-    uint64_t data_byte[BYTE_SIZE];
-    e_api_motor_driver_motor_direction_t direction;
-    e_api_motor_driver_tmc5160_IHOLD_t I_HOLD;
-    e_api_motor_driver_tmc5160_IRUN_t I_RUN;
-    e_api_motor_driver_tmc5160_IHOLDDELAY_t I_HOLDDELAY;
+	SPI_HandleTypeDef *hspi;
+    	e_api_motor_driver_tmc5160_SPI_state_t state_initialize;
+   	 e_api_motor_driver_tmc5160_SPI_state_t state_set_velocity;
+    	uint64_t data_byte[BYTE_SIZE];
+    	e_api_motor_driver_motor_direction_t direction;
+    	e_api_motor_driver_tmc5160_IHOLD_t I_HOLD;
+    	e_api_motor_driver_tmc5160_IRUN_t I_RUN;
+    	e_api_motor_driver_tmc5160_IHOLDDELAY_t I_HOLDDELAY;
 } s_api_motor_driver_tmc5160_t;
 
 // Construct and return a pointer to the driver instance
 const s_api_motor_driver_t * s_api_motor_driver_tmc5160_try__construct(s_api_motor_driver_tmc5160_t * p_self,
-												                       SPI_HandleTypeDef *hspi,
-												                       e_api_motor_driver_tmc5160_IHOLD_t I_HOLD,
-												                       e_api_motor_driver_tmc5160_IRUN_t I_RUN,
-												                       e_api_motor_driver_tmc5160_IHOLDDELAY_t I_HOLDDELAY);
+									SPI_HandleTypeDef *hspi,
+									e_api_motor_driver_tmc5160_IHOLD_t I_HOLD,
+									e_api_motor_driver_tmc5160_IRUN_t I_RUN,
+									e_api_motor_driver_tmc5160_IHOLDDELAY_t I_HOLDDELAY);
 uint32_t api_motor_driver_tmc5160_ihold_irun_value(uint8_t ihold, uint8_t irun, uint8_t iholddelay);
 #endif /* INC_API_MOTOR_DRIVER_TMC5160_H_ */
