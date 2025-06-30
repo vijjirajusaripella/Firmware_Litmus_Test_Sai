@@ -22,7 +22,7 @@ My project follows a clean **4-layer architecture** for modularity and maintaina
 ## ⚙️ Key Functionalities
 
 - **Asynchronous SPI communication** using `HAL_SPI_Transmit_IT`.
-- **State machine-based API design** to prevent blocking delays and allow non-blocking transitions (`initialize`, `set_velocity`, `release_slave`, etc.).
+- **State machine-based API design** to prevent blocking delays and allow non-blocking transitions (`initialize`, `set_velocity` etc.).
 - **Dynamic Velocity Control**:
   - 300 RPM Clockwise → Button press 1
   - 500 RPM Counter-Clockwise → Button press 2
@@ -58,8 +58,8 @@ All Functions in the Application and API Layers use non-blocking, asynchronous s
 
 Only **essential registers** are configured (e.g., `IHOLD_IRUN`, `VACTUAL`, `GSTAT`). Others like `CHOPCONF`, `STEALTHCHOP`, or `PWMCONF` are left at default because:
 
-- The test's goal is to verify basic motor control over SPI, not optimize silent motion or current profiles.
-- Simplifies the driver and makes it believable as a student-level demo.
+- As the test's goal is to verify basic motor control over SPI, not optimize silent motion or current profiles.
+- Simplifies the driver.
 
 ---
 
@@ -103,5 +103,5 @@ This Connection between the Microcontroller pins and TMC5160 pins as shown below
 | PC13 (User_Button)            | -           | Input to change the Motor Direction and Velocity |
 
 
-- The TMC5160 doesn't drive the motor directly; instead, it generates gate signals for 8 external MOSFETs arranged as two full H-bridges, one per motor phase as shown in the above figure. The chip outputs signals on HA1/HA2/LA1/LA2 and HB1/HB2/LB1/LB2 which are connected to external gate drivers (like BMA1/BMB1), and those drive the power MOSFETs as shown in the figure. The two coils of the stepper motor are connected across the outputs of these H-bridges as shown in the figure. We used SPI to configure the TMC5160 with velocity and current parameters, and it handles precise microstepping internally.
+- The TMC5160 doesn't drive the motor directly. Instead, it generates gate signals for 8 external MOSFETs arranged as two full H-bridges, one per motor phase as shown in the above figure. The chip outputs signals on HA1/HA2/LA1/LA2 and HB1/HB2/LB1/LB2 which are connected to external gate drivers (like BMA1/BMB1), and those drive the power MOSFETs as shown in the figure. The two coils of the stepper motor are connected across the outputs of these H-bridges as shown in the figure. We used SPI to configure the TMC5160 with velocity and current parameters, and it handles precise microstepping internally.
 ---
