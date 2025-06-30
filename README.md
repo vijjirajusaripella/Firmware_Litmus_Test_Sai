@@ -84,6 +84,8 @@ This gives full control over the timing and ensures reliable protocol adherence.
 - **Button**: PC13 → Used to cycle motor speed/direction
 - **IDE**: STM32CubeIDE
 
+![Image](https://github.com/user-attachments/assets/ab183b57-9e9a-4de1-9d5e-0164eaba8d7e)
+
 
 This Connection between the Microcontroller pins and TMC5160 pins as shown below:
 
@@ -100,4 +102,6 @@ This Connection between the Microcontroller pins and TMC5160 pins as shown below
 | 3.3V (or) GND             | SPI_Mode (Pin 22)            | As I am using Mode 1 (Full Featured Motion Controller & Driver), It is not required      |
 | PC13 (User_Button)            | -           | Input to change the Motor Direction and Velocity |
 
+
+- The TMC5160 doesn't drive the motor directly; instead, it generates gate signals for 8 external MOSFETs arranged as two full H-bridges, one per motor phase as shown in the above figure. The chip outputs signals on HA1/HA2/LA1/LA2 and HB1/HB2/LB1/LB2 which are connected to external gate drivers (like BMA1/BMB1), and those drive the power MOSFETs as shown in the figure. The two coils of the stepper motor are connected across the outputs of these H-bridges as shown in the figure. We used SPI to configure the TMC5160 with velocity and current parameters, and it handles precise microstepping internally.
 ---
