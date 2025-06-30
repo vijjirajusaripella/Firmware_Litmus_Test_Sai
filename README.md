@@ -46,34 +46,9 @@ We chose **non-blocking, interrupt-driven SPI communication** (`HAL_SPI_Transmit
 
 All Functions in the Application and API Layers use non-blocking, asynchronous state machines design within a switch-case structure. This allows the function to yield and resume cleanly.
 
-### 📌 Application State Machine (`main.c`)
+### 📌 Example: Application State Machine (`main.c`)
 
-```plantuml
-@startuml
-[*] --> INIT
-INIT --> INITIALIZE_MOTOR
-INITIALIZE_MOTOR --> WAIT_INIT
-WAIT_INIT --> CHECK_BUTTON : if OK
-CHECK_BUTTON --> SET_VELOCITY : button press (step 1, 2, 0)
-SET_VELOCITY --> VELOCITY_WAIT
-VELOCITY_WAIT --> CHECK_BUTTON : if HAL_OK
-@enduml
-```
-
----
-### 📌 API State Machine (`api_motor_driver_tmc5160_set_velocity` in api_motor_driver_tmc5160.c/h)
-```plantuml
-@startuml
-[*] --> idle
-idle --> acquiring_slave : Pull CS Low
-acquiring_slave --> calculate_velocity
-calculate_velocity --> write_vactual
-write_vactual --> normal_release_slave : if OK
-write_vactual --> failure_release_slave : if ERROR
-normal_release_slave --> idle
-failure_release_slave --> idle
-@enduml
-```
+![Image](https://github.com/user-attachments/assets/742466af-db34-4441-878e-5ba8407840e2)
 
 ---
 
@@ -97,7 +72,7 @@ This gives full control over the timing and ensures reliable protocol adherence.
 
 ---
 
-## 🔧 Setup Summary
+## 🔌 Hardware Configuration
 
 - **MCU**: STM32F446RE (NUCLEO board)
 - **Driver**: TMC5160
@@ -105,5 +80,6 @@ This gives full control over the timing and ensures reliable protocol adherence.
 - **Communication**: SPI1
 - **Button**: PC13 → Used to cycle motor speed/direction
 - **IDE**: STM32CubeIDE
+- 
 
 ---
