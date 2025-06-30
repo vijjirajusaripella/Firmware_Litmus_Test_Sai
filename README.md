@@ -28,7 +28,9 @@ My project follows a clean **4-layer architecture** for modularity and maintaina
   - 500 RPM Counter-Clockwise → Button press 2
   - Stop → Button press 3 (cycles)
 - **User Button (PC13)** triggers RPM transitions.
-- **SPI1_CS (PB6)** and **SD_Mode (PA9)** are controlled manually for activating TMC5160 SPI mode and communication window.
+- **SD_Mode (PA9)** to enable the MODE 1 (Fully Featured Motion Controller & Driver) and SPI Communication.
+- **SPI_Mode (pin 22 of TMC)** is not considered as i am not using the MODE 2, Mode 3 and UART Communication.
+- **SPI1_CS (PB6)** is used to enable or disable the SPI Communication between Microocntroller and TMC5160 Chip.
 - **DRR_ENN (PA8)** to enable or diable the motor driver.
 ---
 
@@ -81,6 +83,21 @@ This gives full control over the timing and ensures reliable protocol adherence.
 - **Communication**: SPI1
 - **Button**: PC13 → Used to cycle motor speed/direction
 - **IDE**: STM32CubeIDE
-- 
+
+
+This Connection between the Microcontroller pins and TMC5160 pins as shown below:
+
+| STM32F446RE Pin         | TMC5160 Pin        | Functionality              |
+|-------------------|--------------------|----------------------------|
+| PA5 (SPI1_SCK)     | SCK(Pin 14)              | SPI Clock                  |
+| PA6 (SPI1_MISO)    | SDO (Pin 16)                | Master In, Slave Out       |
+| PA7 (SPI1_MOSI)    | SDI (Pin 15)             | Master Out, Slave In       |
+| PB6 (SPI1_CS)      | CSN (Pin 13)                | Chip Select to make SPI Communication Active between controller and chip   |
+| PA9 (GPIO_Output)  | SD_MODE (Pin 21)           | Selects SPI Mode (LOW)     |
+| PA8 (GPIO_Output)             | DRV_ENN (Pin 28)                | To enable the Driver (Low) |
+| GND               | GND, GNDA, GNDD              | Common Ground              |
+| 3.3V              | VCC_IO (Pin 20)           | Digital IO       |
+| 3.3V (or) GND             | SPI_Mode (Pin 22)            | As I am using Mode 1 (Full Featured Motion Controller & Driver), It is not required      |
+| PC13 (User_Button)            | -           | Input to change the Motor Direction and Velocity |
 
 ---
