@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "api_motor_driver_tmc5160.h"
+#include "api_motor_driver.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -122,7 +123,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+     Firmware_Litmus_Test();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -320,7 +321,6 @@ HAL_StatusTypeDef Firmware_Litmus_Test(void)
             break;
         case e_app_motor_state_check_button:
             GPIO_PinState button_state = HAL_GPIO_ReadPin(User_Button_Input_GPIO_Port, User_Button_Input_Pin);
-
             if (button_state == BUTTON_PRESSED && last_button_state == GPIO_PIN_SET) // falling edge
             {
                 current_speed_step = (current_speed_step + 1) % 3;
