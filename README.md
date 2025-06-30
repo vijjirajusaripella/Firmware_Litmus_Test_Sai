@@ -49,7 +49,7 @@ We chose **non-blocking, interrupt-driven SPI communication** (`HAL_SPI_Transmit
 
 All Functions in the Application and API Layers use non-blocking, asynchronous state machines design within a switch-case structure. This allows the function to yield and resume cleanly.
 
-### 📌 Example: Application State Machine (`main.c`)
+### 📌 Example UML Diagram: Application State Machine (`main.c`)
 
 ![Image](https://github.com/user-attachments/assets/742466af-db34-4441-878e-5ba8407840e2)
 
